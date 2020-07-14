@@ -65,7 +65,7 @@ function save(){
     setCookie("number", number);
     setCookie("tickspeed", tickSpeed);
     var d = new Date();
-    var time = d.getDay() + "-" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    var time = d.toLocaleDateString() + " - - " + d.toLocaleTimeString();
     document.getElementById("lastSavedDiv").innerHTML = "Last saved:" + time;
 }
 
