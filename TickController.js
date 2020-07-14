@@ -58,6 +58,7 @@ function redrawCanvas(){
 }
 
 function compute(){
+    
     number = number + increment;
 }
 
