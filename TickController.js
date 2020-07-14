@@ -58,18 +58,25 @@ function redrawCanvas(){
 }
 
 function compute(){
-
-    number = number + increment;
+    number = parseFloat(number) + parseFloat(increment);  
 }
 
 function save(){
     setCookie("number", number);
     setCookie("tickspeed", tickSpeed);
-    var millis = new Date().getMilliseconds();
-    document.getElementById("lastSavedDiv").innerHTML = "Last saved:" + millis;
+    var d = new Date();
+    var time = d.getDay() + "-" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    document.getElementById("lastSavedDiv").innerHTML = "Last saved:" + time;
 }
 
 function refreshTickSpeed(){
     clearInterval(computeInterval);
     keepComputing();
+}
+
+function reset(){
+    setCookie("number", "");
+    setCookie("tickSpeed", "");
+    number = 0;
+    tickSpeed = 1000;
 }
