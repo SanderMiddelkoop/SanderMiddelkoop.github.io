@@ -13,4 +13,15 @@
     background-color: gray;
     color: white;
     text-indent: 10;
+    margin-top: 0;
+}
+
+#numberCircleDiv{
+    position: relative;
+    margin-top: 20px;
+}
+
+#resetButton{
+    position: relative;
+    margin-top: 20px;
 }
