@@ -15,11 +15,11 @@ window.onload = function(){
 function initValues(){
     var innerNumber = getCookie("number");
     if(innerNumber != ""){
-        number=innerNumber;
+        number=innerNumber * 1;
     }
     var innerTickSpeed = getCookie("tickspeed");
     if(innerTickSpeed != ""){
-        tickSpeed=innerTickSpeed;
+        tickSpeed=innerTickSpeed * 1;
     }
 }
 
@@ -58,7 +58,7 @@ function redrawCanvas(){
 }
 
 function compute(){
-    
+
     number = number + increment;
 }
 
