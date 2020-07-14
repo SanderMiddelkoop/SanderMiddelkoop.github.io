@@ -5,9 +5,22 @@ var increment = 1;
 var computeInterval;
 
 window.onload = function(){    
+    initValues();
     initCanvas();
     keepComputing();
     keepDrawingCanvas();
+    keepSaving();
+}
+
+function initValues(){
+    var innerNumber = getCookie("number");
+    if(innerNumber != ""){
+        number=innerNumber;
+    }
+    var innerTickSpeed = getCookie("tickspeed");
+    if(innerTickSpeed != ""){
+        tickSpeed=innerTickSpeed;
+    }
 }
 
 function initCanvas(){
@@ -18,6 +31,13 @@ function keepDrawingCanvas(){
     setInterval(redrawCanvas, refreshRate);
 }
 
+function keepComputing(){
+    computeInterval = setInterval(compute, tickSpeed);
+}
+
+function keepSaving(){
+    setInterval(save, 10000);
+}
 
 function redrawCanvas(){
     var canvas = document.getElementById("numberCircle");
@@ -37,12 +57,15 @@ function redrawCanvas(){
     context.fill();
 }
 
-function keepComputing(){
-    computeInterval = setInterval(compute, tickSpeed);
-}
-
 function compute(){
     number = number + increment;
+}
+
+function save(){
+    setCookie("number", number);
+    setCookie("tickspeed", tickSpeed);
+    var millis = new Date().getMilliseconds();
+    document.getElementById("lastSavedDiv").innerHTML = "Last saved:" + millis;
 }
 
 function refreshTickSpeed(){
