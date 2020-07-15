@@ -3,18 +3,21 @@
 		<link rel="stylesheet" type="text/css" href="main.css">
     </head>
     
-    <div id="headerDiv">
-        <p>Hoi Sor!</p>
-    </div>    
+    <div id="screenDiv">
+        <div id="headerDiv">
+            <p>Hoi Sor!</p>
+        </div>    
 
-    <div id="lastSavedDiv">
+        <div id="lastSavedDiv"></div>
+
+        <div id="buttonsDiv">
+        <button id="resetButton" onclick="reset()">RESET</button>
+        </div>
+
+        <div id="numberCircleDiv">
+            <canvas id="numberCircle" width=300 height=580></canvas>
+        </div>
     </div>
-
-    <div id="numberCircleDiv">
-        <canvas id="numberCircle" width=300 height=300></canvas>
-    </div>
-
-    <button id="resetButton" onclick="reset()">RESET</button>
 
     <script src=TickController.js></script>
     <script src=CookieHandler.js></script>
