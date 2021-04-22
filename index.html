@@ -1,25 +1,52 @@
 <html>
-    <head>	
-		<link rel="stylesheet" type="text/css" href="main.css">
-    </head>
-    
-    <div id="screenDiv">
-        <div id="headerDiv">
-            <p>Hoi Sor!</p>
-        </div>    
+  
+<head>
+    <title>Woorden Checker</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+  
+<body>
+    <input type="file" name="inputfile"
+            id="inputfile">
+    </input>
+    <br>
 
-        <div id="lastSavedDiv"></div>
+    <button onclick="displayText()">Laat inhoud zien</button>
+   
+    <pre id="output"></pre>
 
-        <div id="buttonsDiv">
-        <button id="resetButton" onclick="reset()">RESET</button>
-        </div>
+    <br>
 
-        <div id="numberCircleDiv">
-            <canvas id="numberCircle" width=300 height=580></canvas>
-        </div>
-    </div>
+    <textarea id="inputtext"></textarea>   
 
-    <script src=TickController.js></script>
-    <script src=CookieHandler.js></script>
+    <br>
+    <br>
 
+    <div id="wrongwords"></div>
+      
+    <script type="text/javascript">
+        document.getElementById('inputfile')
+            .addEventListener('change', function() {              
+            var fr=new FileReader(); 
+	    fr.onload = (e) => {
+            	var text = e.target.result;
+		setText(text);
+	    }                  
+            fr.readAsText(this.files[0]);	    
+        })
+    </script>
+
+    <script type="text/javascript">
+	document.getElementById('inputtext')
+	.addEventListener('keydown', (e) => {
+		if(e.keyCode === 32 | e.keyCode === 188 | e.keyCode === 190){
+			let result = checkWords(document.getElementById('inputtext').value);
+			fillErrorBox(result);
+		}
+	})
+    </script>
+
+    <script src=textchecker.js></script>
+</body>
+  
 </html>
